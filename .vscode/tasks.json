@@ -1,0 +1,32 @@
+{
+  // Run "Start SmartShop" from Terminal > Run Task... (or Ctrl+Shift+B).
+  // It starts the API server and the Expo app side by side, each in its own folder.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start SmartShop",
+      "dependsOn": ["API server", "Expo app"],
+      "dependsOrder": "parallel",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "API server",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/server" },
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "smartshop" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Expo app",
+      "type": "shell",
+      "command": "npx expo start",
+      "options": { "cwd": "${workspaceFolder}/app" },
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "smartshop", "focus": true },
+      "problemMatcher": []
+    }
+  ]
+}
